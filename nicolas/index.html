@@ -269,6 +269,14 @@
     color: #B9AF97;
     font-size: 0.9rem;
   }
+  footer a {
+    color: var(--color-gold);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+  footer a:hover, footer a:focus-visible {
+    opacity: 0.75;
+  }
 
   @media (max-width: 640px) {
     .hero { padding: 3rem 1.2rem 2.2rem; }
@@ -301,7 +309,7 @@
     <main class="gifts-grid" id="giftsGrid"></main>
 
     <footer>
-      <p>Liste mise à jour au fil de l'eau — dernière touche le 6 septembre 2026 à 14h32.</p>
+      <p>Liste mise à jour au fil de l'eau — dernier commit <a href="__COMMIT_URL__">__COMMIT_SHA__</a>.</p>
     </footer>
   </div>
 

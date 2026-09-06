@@ -24,6 +24,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Inject commit link into footers
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+          sed -i "s|__COMMIT_URL__|$COMMIT_URL|g; s|__COMMIT_SHA__|$SHORT_SHA|g" nicolas/index.html lucile/index.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
