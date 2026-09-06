@@ -140,17 +140,26 @@
     box-shadow: inset 0 0 0 3px var(--color-gold);
   }
 
-  .example-flag {
+  .tag-flag {
     position: absolute;
     top: 14px;
     right: -6px;
+    max-width: 62%;
     background: var(--color-rust);
     color: var(--color-cream);
     font-size: 0.72rem;
+    line-height: 1.3;
+    text-align: right;
     padding: 0.25rem 0.6rem;
     border-radius: 3px 3px 3px 0;
     transform: rotate(3deg);
     box-shadow: 0 4px 8px -4px rgba(0,0,0,0.4);
+  }
+
+  .tag-date {
+    font-size: 0.78rem;
+    color: #8A8067;
+    margin: 0;
   }
 
   .tag-icon {
@@ -275,29 +284,42 @@
 
   // Idées réelles de Nicolas — liens nettoyés des paramètres de tracking.
   const gifts = [
-    { id: 'enceintes-presonus', title: 'Enceintes PreSonus Eris 3.5 Gen 2', note: "Des enceintes de bureau qualité studio, pour le son entre deux sessions de code.", price: '≈ 90 €', url: 'https://www.amazon.fr/dp/B0CC3BJKGN', icon: 'speaker' },
-    { id: 'support-enceintes', title: "Support d'enceintes à pince", note: "Pour surélever les enceintes ci-dessus et libérer de la place sur le bureau.", price: '≈ 40 €', url: 'https://www.amazon.fr/dp/B0F6JZHS8J', icon: 'stand' },
-    { id: 'prise-hue', title: 'Philips Hue — prises connectées', note: "Pour piloter les enceintes (ou une lampe) sans toucher à l'installation électrique.", price: '≈ 95 €', url: 'https://www.amazon.fr/dp/B0CDHC6HXX', icon: 'plug' },
-    { id: 'adaptateur-usbc', title: 'Adaptateur USB-C vers mini-jack Apple', note: "Pour brancher un casque filaire sur un appareil qui n'a plus de prise jack.", price: '≈ 12 €', url: 'https://www.amazon.fr/dp/B0D7MN4W7H', icon: 'adapter' },
-    { id: 'souris-mx-master-4', title: 'Souris Logitech MX Master 4 (Graphite)', note: "Souris ergonomique avec retour haptique et défilement ultra-rapide.", price: '≈ 140 €', url: 'https://www.amazon.fr/dp/B0FHHSZ8WM', icon: 'mouse' },
-    { id: 'tapis-bureau-gris', title: 'Tapis de bureau XXL gris (feutre)', note: "Format 100 x 40 cm, assez grand pour un clavier 100% et une souris. Choisi pour coller au style épuré demandé — dis-moi si ce n'est pas le bon modèle.", price: '≈ 20 €', url: 'https://www.amazon.fr/dp/B096S2Z9Q7', icon: 'deskmat' }
+    { id: 'enceintes-presonus', title: 'Enceintes PreSonus Eris 3.5 Gen 2', note: "Des enceintes de bureau qualité studio, pour le son entre deux sessions de code.", price: '≈ 90 €', url: 'https://www.amazon.fr/dp/B0CC3BJKGN', icon: 'speaker', added: '2026-09-06', badge: 'coup de cœur' },
+    { id: 'support-enceintes', title: "Support d'enceintes à pince", note: "Pour surélever les enceintes ci-dessus et libérer de la place sur le bureau.", price: '≈ 40 €', url: 'https://www.amazon.fr/dp/B0F6JZHS8J', icon: 'stand', added: '2026-09-06' },
+    { id: 'prise-hue', title: 'Philips Hue — prises connectées', note: "Pour piloter les enceintes (ou une lampe) sans toucher à l'installation électrique.", price: '≈ 95 €', url: 'https://www.amazon.fr/dp/B0CDHC6HXX', icon: 'plug', added: '2026-09-06' },
+    { id: 'adaptateur-usbc', title: 'Adaptateur USB-C vers mini-jack Apple', note: "Pour brancher un casque filaire sur un appareil qui n'a plus de prise jack.", price: '≈ 12 €', url: 'https://www.amazon.fr/dp/B0D7MN4W7H', icon: 'adapter', added: '2026-09-06', badge: 'petit prix' },
+    { id: 'souris-mx-master-4', title: 'Souris Logitech MX Master 4 (Graphite)', note: "Souris ergonomique avec retour haptique et défilement ultra-rapide.", price: '≈ 140 €', url: 'https://www.amazon.fr/dp/B0FHHSZ8WM', icon: 'mouse', added: '2026-09-06' },
+    { id: 'tapis-bureau-gris', title: 'Tapis de bureau XXL gris (feutre)', note: "Format 100 x 40 cm, assez grand pour un clavier 100% et une souris. Choisi pour coller au style épuré demandé — dis-moi si ce n'est pas le bon modèle.", price: '≈ 20 €', url: 'https://www.amazon.fr/dp/B096S2Z9Q7', icon: 'deskmat', added: '2026-09-06', badge: 'modèle à confirmer' }
   ];
 
   const ROTATIONS = [-2, 1.5, -1.5, 2, -1, 1.8];
 
   const JOKES = [
-    "le bonheur, ça s'emballe (mal, souvent, mais ça compte)",
-    "un cadeau bien choisi vaut mille silences gênés à Noël",
+    "le bonheur, ça s'emballe (mal, souvent, mais l'intention est là)",
+    "un cadeau bien choisi vaut mille silences gênés à table",
     "ici, on n'offre pas de chaussettes… sauf si c'est écrit dessus",
-    "le vrai bonheur, c'est de ne pas se tromper de taille",
+    "le vrai luxe, c'est de ne pas se tromper de taille",
     "cadeau reçu, bonheur livré, frais de port offerts",
-    "attention : liste rédigée sous forte influence de gourmandise",
+    "liste rédigée sous forte influence de gourmandise",
     "un bon cadeau, c'est 10 % de surprise et 90 % de cette page",
-    "le bonheur ne s'achète pas, mais ça aide clairement",
-    "ici commence l'art délicat de me faire plaisir",
+    "le bonheur ne s'achète pas, mais un bon lien aide beaucoup",
+    "ici commence l'art délicat de faire plaisir sans se ruiner",
     "cadeau + emballage raté = amour quand même",
-    "spoiler : je serai content de toute façon",
-    "cette liste a été testée et approuvée par mon porte-monnaie"
+    "spoiler : la réaction sera exagérée, mais sincère",
+    "cette liste a été testée et approuvée par mon porte-monnaie… presque",
+    "anniversaire, Noël, mardi : toute occasion est la bonne",
+    "offrir, c'est aimer ; offrir la bonne chose, c'est écouter",
+    "comité de sélection : moi, moi-même et mes envies",
+    "aucune pression, mais le compte à rebours a commencé",
+    "un cadeau d'ici = zéro risque de doublon (pensez à vérifier avec le contact)",
+    "les bougies sur le gâteau coûtent moins cher que ça, je sais",
+    "si tu hésites entre deux, prends les deux",
+    "la carte cadeau c'est bien, la carte cadeau + un mot doux c'est mieux",
+    "ceci n'est pas une lettre au Père Noël, c'est un document de travail",
+    "prévoir le ticket de caisse, on ne sait jamais (mais on y croit)",
+    "budget serré ? il y a des idées à petit prix, promis",
+    "le meilleur cadeau reste ta présence — les autres suivent de près",
+    "chaque ligne cochée, c'est un sourire garanti"
   ];
 
   function showRandomJoke() {
@@ -313,17 +335,27 @@
     return e;
   }
 
+  // '2026-09-06' -> '6 septembre 2026'
+  function formatDate(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
   function renderCard(gift, index) {
     const card = el('article', 'tag-card');
     card.style.setProperty('--rot', ROTATIONS[index % ROTATIONS.length] + 'deg');
     card.dataset.giftId = gift.id;
 
     card.appendChild(el('div', 'tag-hole'));
-    if (gift.example) card.appendChild(el('div', 'example-flag', 'exemple'));
+    // Bandeau rouge : soit un exemple, soit une info ponctuelle (coup de cœur, taille XL…).
+    const flagText = gift.badge || (gift.example ? 'exemple' : null);
+    if (flagText) card.appendChild(el('div', 'tag-flag', flagText));
     card.appendChild(el('div', 'tag-icon', ICONS[gift.icon] || ICONS.gift));
     card.appendChild(el('h3', 'tag-title', gift.title));
     card.appendChild(el('p', 'tag-note', gift.note));
     card.appendChild(el('p', 'tag-price', gift.price));
+    if (gift.added) card.appendChild(el('p', 'tag-date', 'Ajouté le ' + formatDate(gift.added)));
 
     const actions = el('div', 'tag-actions');
     const viewBtn = el('a', 'btn-view', gift.example ? 'Lien à venir' : 'Voir le cadeau ↗');

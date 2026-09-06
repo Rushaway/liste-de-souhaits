@@ -51,8 +51,18 @@ Ajouter un objet dans le tableau `gifts` de `nicolas/index.html` ou
 
 ```js
 { id: 'slug-unique', title: 'Nom du cadeau', note: 'Pourquoi ça me plaît.',
-  price: '≈ 30 €', url: 'https://…', icon: 'gift' }
+  price: '≈ 30 €', url: 'https://…', icon: 'gift',
+  added: '2026-09-06',      // date d'ajout (AAAA-MM-JJ) — affichée « Ajouté le 6 septembre 2026 »
+  badge: 'coup de cœur' }   // optionnel — bandeau rouge (coup de cœur, taille XL, petit prix, à confirmer…)
 ```
+
+Champs : `id`, `title`, `note`, `price` obligatoires ; `url` (sinon bouton
+désactivé), `icon`, `added`, `badge` optionnels ; `example: true` pour une
+carte de démo (lien grisé « Lien à venir »).
+
+Les listes servent pour Noël **et** les anniversaires — les citations en haut
+de page (tableau `JOKES`) tournent au hasard à chaque chargement, ajoutes-en
+si l'envie te prend.
 
 Les icônes disponibles sont listées dans l'objet `ICONS` en haut du
 `<script>`. Ajouter une nouvelle icône SVG plutôt que d'en réutiliser une qui
