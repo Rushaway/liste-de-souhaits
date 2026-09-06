@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>La liste de Nicolas</title>
+<title>Nos listes de souhaits</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,343 +12,82 @@
     --color-bg: #24352A;
     --color-bg-deep: #1C2921;
     --color-card: #F1E7D2;
-    --color-card-shadow: rgba(15, 20, 15, 0.45);
     --color-ink: #2B2418;
     --color-ink-soft: #5B5340;
     --color-gold: #C9A24C;
-    --color-gold-deep: #9C7A2E;
     --color-rust: #A6452F;
     --color-cream: #F4ECDA;
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'Work Sans', -apple-system, sans-serif;
   }
-
   * { box-sizing: border-box; }
-
   body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--color-bg);
     background-image: radial-gradient(ellipse at top, var(--color-bg) 0%, var(--color-bg-deep) 100%);
     font-family: var(--font-body);
     color: var(--color-cream);
     -webkit-font-smoothing: antialiased;
+    padding: 2rem 1.2rem;
   }
-
-  .page {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 0 3rem;
-  }
-
-  /* ---------- HERO ---------- */
-  .hero {
-    text-align: center;
-    padding: 4.5rem 1.5rem 3rem;
-    animation: settle 0.7s ease-out;
-  }
-
-  @keyframes settle {
-    from { opacity: 0; transform: translateY(-10px) rotate(-1deg); }
-    to   { opacity: 1; transform: translateY(0) rotate(0deg); }
-  }
-
-  .hero-tag {
-    display: inline-block;
-    background: var(--color-card);
-    color: var(--color-ink);
-    padding: 0.35rem 1rem;
-    border-radius: 3px 10px 3px 10px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    margin-bottom: 1.5rem;
-    transform: rotate(-2deg);
-    box-shadow: 0 6px 14px -8px rgba(0,0,0,0.5);
-  }
-
-  .hero h1 {
+  .wrap { text-align: center; max-width: 640px; width: 100%; }
+  h1 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(2.1rem, 5vw, 3.4rem);
-    line-height: 1.15;
-    margin: 0 0 1.1rem;
-    color: var(--color-cream);
-    max-width: 16ch;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    margin: 0 0 0.6rem;
   }
-
-  .hero p {
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: #D8CFB8;
-    max-width: 46ch;
-    margin: 0 auto 0.5rem;
-  }
-
-  .hero .signature {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--color-gold);
-    margin-top: 1.4rem;
-  }
-
-  /* ---------- DIVIDER ---------- */
-  .tear {
-    height: 1px;
-    max-width: 320px;
-    margin: 0 auto 2.5rem;
-    background: repeating-linear-gradient(to right, rgba(244,236,218,0.35) 0 8px, transparent 8px 14px);
-  }
-
-  /* ---------- GRID ---------- */
-  .gifts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2.2rem 1.8rem;
-    padding: 0 1.8rem;
-  }
-
-  .tag-card {
-    position: relative;
+  p.lead { color: #D8CFB8; line-height: 1.6; margin: 0 auto 2.4rem; max-width: 42ch; }
+  .cards { display: grid; gap: 1.4rem; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+  a.card {
+    display: block;
     background: var(--color-card);
     color: var(--color-ink);
-    border-radius: 4px 18px 4px 18px;
-    padding: 2.1rem 1.4rem 1.5rem;
-    box-shadow: 0 14px 26px -14px var(--color-card-shadow);
-    transform: rotate(var(--rot, 0deg));
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-
-  .tag-card:hover, .tag-card:focus-within {
-    transform: rotate(0deg) translateY(-6px);
-    box-shadow: 0 20px 34px -14px var(--color-card-shadow);
-  }
-
-  .tag-hole {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--color-bg);
-    box-shadow: inset 0 0 0 3px var(--color-gold);
-  }
-
-  .example-flag {
-    position: absolute;
-    top: 14px;
-    right: -6px;
-    background: var(--color-rust);
-    color: var(--color-cream);
-    font-size: 0.72rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 3px 3px 3px 0;
-    transform: rotate(3deg);
-    box-shadow: 0 4px 8px -4px rgba(0,0,0,0.4);
-  }
-
-  .tag-icon {
-    margin: 0.3rem 0 0.2rem 2.2rem;
-    color: var(--color-gold-deep);
-  }
-  .tag-icon svg { width: 34px; height: 34px; }
-
-  .tag-title {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.3rem;
-    margin: 0;
-    line-height: 1.25;
-  }
-
-  .tag-note {
-    font-size: 0.92rem;
-    color: var(--color-ink-soft);
-    line-height: 1.5;
-    margin: 0;
-    flex-grow: 1;
-  }
-
-  .tag-price {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--color-rust);
-    margin: 0;
-  }
-
-  .tag-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 0.5rem;
-  }
-
-  .btn-view {
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
     text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    transition: transform 0.15s ease, opacity 0.15s ease;
-    background: var(--color-ink);
-    color: var(--color-cream);
+    border-radius: 4px 18px 4px 18px;
+    padding: 2rem 1.4rem;
+    box-shadow: 0 14px 26px -14px rgba(15,20,15,0.45);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .btn-view[aria-disabled="true"] {
-    background: #C9BFA6;
-    color: #7A7259;
-    pointer-events: none;
+  a.card:hover, a.card:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 34px -14px rgba(15,20,15,0.5);
   }
-  .btn-view:hover { transform: translateY(-1px); }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    text-align: center;
-    padding: 3.5rem 1.5rem 1rem;
-    color: #B9AF97;
-    font-size: 0.9rem;
+  a.card .who {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.3rem;
   }
-
-  @media (max-width: 640px) {
-    .hero { padding: 3rem 1.2rem 2.2rem; }
-    .gifts-grid { padding: 0 1.1rem; gap: 1.6rem; }
-    .tag-card { padding: 1.8rem 1.2rem 1.3rem; }
+  a.card .go {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-rust);
+    font-size: 0.95rem;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero, .tag-card, .btn-view { animation: none !important; transition: none !important; }
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--color-gold);
-    outline-offset: 2px;
-  }
+  :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
 </style>
 </head>
 <body>
-  <div class="page">
-    <header class="hero">
-      <span class="hero-tag" id="heroJoke"></span>
-      <h1>Quelques idées, pour ne plus deviner</h1>
-      <p>Fini les devinettes interminables : voici tout ce qui me ferait plaisir. Pour la coordination et éviter les doublons, un seul contact : Lucile ❤️ — c'est elle qui gère.</p>
-      <p class="signature">Avec plein d'amour, Nicolas 💛</p>
-    </header>
-
-    <div class="tear"></div>
-
-    <main class="gifts-grid" id="giftsGrid"></main>
-
-    <footer>
-      <p>Liste mise à jour au fil de l'eau — dernière touche le 6 septembre 2026 à 14h32.</p>
-    </footer>
+  <div class="wrap">
+    <h1>Nos listes de souhaits</h1>
+    <p class="lead">Deux listes, une seule adresse. Choisis la bonne étiquette.</p>
+    <div class="cards">
+      <a class="card" href="./nicolas/">
+        <span class="who">Nicolas 💛</span>
+        <span class="go">voir la liste ↗</span>
+      </a>
+      <a class="card" href="./lucile/">
+        <span class="who">Lucile ❤️</span>
+        <span class="go">voir la liste ↗</span>
+      </a>
+    </div>
   </div>
-
-<script>
-(function () {
-  const ICONS = {
-    keyboard: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="32" height="18" rx="3"/><path d="M9 18h2M15 18h2M21 18h2M27 18h2M9 23h2M15 23h10M27 23h2"/></svg>',
-    headphones: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22v-2a14 14 0 0 1 28 0v2"/><rect x="4" y="21" width="8" height="12" rx="3"/><rect x="28" y="21" width="8" height="12" rx="3"/></svg>',
-    plant: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 34V20"/><path d="M13 20c-5 0-8-4-8-9 5 0 8 3 8 9Z"/><path d="M13 22c5 0 8-5 8-11-5 0-8 4-8 11Z"/><path d="M8 34h10"/></svg>',
-    coffee: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16h18v9a9 9 0 0 1-18 0v-9Z"/><path d="M26 18h3a4 4 0 0 1 0 8h-3"/><path d="M13 8c0 2-2 2-2 4M19 8c0 2-2 2-2 4"/></svg>',
-    book: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12c-3-2.5-7-3-12-2v20c5-1 9-.5 12 2 3-2.5 7-3 12-2V10c-5-1-9-.5-12 2Z"/><path d="M20 12v20"/></svg>',
-    gift: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="16" width="28" height="16" rx="2"/><path d="M6 22h28"/><path d="M20 16v16"/><path d="M20 16c-2-6-10-6-9-1 0 1.5 4 1 9 1Z"/><path d="M20 16c2-6 10-6 9-1 0 1.5-4 1-9 1Z"/></svg>',
-    speaker: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="11" y="5" width="18" height="30" rx="3"/><circle cx="20" cy="13" r="3"/><circle cx="20" cy="25" r="6"/><circle cx="20" cy="25" r="2.2"/></svg>',
-    stand: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="6" width="16" height="6" rx="2"/><path d="M17 12v16"/><path d="M9 32c-4 0-4-8 0-8"/><path d="M9 24h6"/><path d="M9 32h6"/></svg>',
-    plug: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6a9 9 0 0 1 12 0"/><path d="M16 14V7M24 14V7"/><rect x="10" y="14" width="20" height="16" rx="5"/><path d="M20 30v4"/></svg>',
-    adapter: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="15" width="11" height="9" rx="2.5"/><path d="M16 19.5h9"/><circle cx="30" cy="19.5" r="6"/><path d="M28 10v4M32 10v4"/></svg>',
-    mouse: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6c-6 0-10 5-10 12v6a10 10 0 0 0 20 0v-6c0-7-4-12-10-12Z"/><path d="M20 6v10"/><path d="M14 16h12"/></svg>',
-    deskmat: '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="32" height="20" rx="4"/><rect x="8" y="14" width="14" height="8" rx="1.5"/><circle cx="28" cy="22" r="3.5"/></svg>'
-  };
-
-  // Idées réelles de Nicolas — liens nettoyés des paramètres de tracking.
-  const gifts = [
-    { id: 'enceintes-presonus', title: 'Enceintes PreSonus Eris 3.5 Gen 2', note: "Des enceintes de bureau qualité studio, pour le son entre deux sessions de code.", price: '≈ 90 €', url: 'https://www.amazon.fr/dp/B0CC3BJKGN', icon: 'speaker' },
-    { id: 'support-enceintes', title: "Support d'enceintes à pince", note: "Pour surélever les enceintes ci-dessus et libérer de la place sur le bureau.", price: '≈ 40 €', url: 'https://www.amazon.fr/dp/B0F6JZHS8J', icon: 'stand' },
-    { id: 'prise-hue', title: 'Philips Hue — prises connectées', note: "Pour piloter les enceintes (ou une lampe) sans toucher à l'installation électrique.", price: '≈ 95 €', url: 'https://www.amazon.fr/dp/B0CDHC6HXX', icon: 'plug' },
-    { id: 'adaptateur-usbc', title: 'Adaptateur USB-C vers mini-jack Apple', note: "Pour brancher un casque filaire sur un appareil qui n'a plus de prise jack.", price: '≈ 12 €', url: 'https://www.amazon.fr/dp/B0D7MN4W7H', icon: 'adapter' },
-    { id: 'souris-mx-master-4', title: 'Souris Logitech MX Master 4 (Graphite)', note: "Souris ergonomique avec retour haptique et défilement ultra-rapide.", price: '≈ 140 €', url: 'https://www.amazon.fr/dp/B0FHHSZ8WM', icon: 'mouse' },
-    { id: 'tapis-bureau-gris', title: 'Tapis de bureau XXL gris (feutre)', note: "Format 100 x 40 cm, assez grand pour un clavier 100% et une souris. Choisi pour coller au style épuré demandé — dis-moi si ce n'est pas le bon modèle.", price: '≈ 20 €', url: 'https://www.amazon.fr/dp/B096S2Z9Q7', icon: 'deskmat' }
-  ];
-
-  const ROTATIONS = [-2, 1.5, -1.5, 2, -1, 1.8];
-
-  const JOKES = [
-    "le bonheur, ça s'emballe (mal, souvent, mais ça compte)",
-    "un cadeau bien choisi vaut mille silences gênés à Noël",
-    "ici, on n'offre pas de chaussettes… sauf si c'est écrit dessus",
-    "le vrai bonheur, c'est de ne pas se tromper de taille",
-    "cadeau reçu, bonheur livré, frais de port offerts",
-    "attention : liste rédigée sous forte influence de gourmandise",
-    "un bon cadeau, c'est 10 % de surprise et 90 % de cette page",
-    "le bonheur ne s'achète pas, mais ça aide clairement",
-    "ici commence l'art délicat de me faire plaisir",
-    "cadeau + emballage raté = amour quand même",
-    "spoiler : je serai content de toute façon",
-    "cette liste a été testée et approuvée par mon porte-monnaie"
-  ];
-
-  function showRandomJoke() {
-    const target = document.getElementById('heroJoke');
-    if (!target) return;
-    target.textContent = JOKES[Math.floor(Math.random() * JOKES.length)];
-  }
-
-  function el(tag, className, html) {
-    const e = document.createElement(tag);
-    if (className) e.className = className;
-    if (html !== undefined) e.innerHTML = html;
-    return e;
-  }
-
-  function renderCard(gift, index) {
-    const card = el('article', 'tag-card');
-    card.style.setProperty('--rot', ROTATIONS[index % ROTATIONS.length] + 'deg');
-    card.dataset.giftId = gift.id;
-
-    card.appendChild(el('div', 'tag-hole'));
-    if (gift.example) card.appendChild(el('div', 'example-flag', 'exemple'));
-    card.appendChild(el('div', 'tag-icon', ICONS[gift.icon] || ICONS.gift));
-    card.appendChild(el('h3', 'tag-title', gift.title));
-    card.appendChild(el('p', 'tag-note', gift.note));
-    card.appendChild(el('p', 'tag-price', gift.price));
-
-    const actions = el('div', 'tag-actions');
-    const viewBtn = el('a', 'btn-view', gift.example ? 'Lien à venir' : 'Voir le cadeau ↗');
-    if (gift.example || !gift.url || gift.url === '#') {
-      viewBtn.setAttribute('aria-disabled', 'true');
-      viewBtn.removeAttribute('href');
-    } else {
-      viewBtn.href = gift.url;
-      viewBtn.target = '_blank';
-      viewBtn.rel = 'noopener';
-    }
-    actions.appendChild(viewBtn);
-    card.appendChild(actions);
-
-    return card;
-  }
-
-  function init() {
-    showRandomJoke();
-    const grid = document.getElementById('giftsGrid');
-    gifts.forEach((gift, i) => grid.appendChild(renderCard(gift, i)));
-  }
-
-  init();
-})();
-</script>
 </body>
 </html>

@@ -1,12 +1,25 @@
-# La liste de Nicolas
+# Nos listes de souhaits
 
-Petit site statique (une seule page `index.html`, CSS + JS inline, aucune
-dépendance, aucun build) qui recense mes idées de cadeaux pour ma femme, ma
-famille et mes amis. Mobile-friendly.
+Site statique (HTML/CSS/JS inline, aucune dépendance, aucun build). Deux listes
+de cadeaux hébergées sur le même repo. Mobile-friendly.
+
+| Page | URL |
+|------|-----|
+| Accueil (choix de la liste) | https://rushaway.github.io/liste-de-souhaits/ |
+| Liste de Nicolas | https://rushaway.github.io/liste-de-souhaits/nicolas/ |
+| Liste de Lucile | https://rushaway.github.io/liste-de-souhaits/lucile/ |
+
+## Structure
+
+```
+index.html          → page d'accueil, liens vers les deux listes
+nicolas/index.html  → liste de Nicolas
+lucile/index.html   → liste de Lucile
+```
 
 ## Aperçu en local
 
-Ouvrir `index.html` dans un navigateur. C'est tout.
+Ouvrir le `index.html` voulu dans un navigateur. C'est tout.
 
 ## Déploiement (CI/CD → GitHub Pages)
 
@@ -33,7 +46,8 @@ gh api repos/{owner}/{repo}/pages --jq .html_url
 
 ## Ajouter un cadeau
 
-Ajouter un objet dans le tableau `gifts` de `index.html` :
+Ajouter un objet dans le tableau `gifts` de `nicolas/index.html` ou
+`lucile/index.html` :
 
 ```js
 { id: 'slug-unique', title: 'Nom du cadeau', note: 'Pourquoi ça me plaît.',
